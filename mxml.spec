@@ -3,13 +3,13 @@
 
 Summary:	Miniature XML development library
 Name:		mxml
-Version:	2.2.2
-Release:	%mkrel 2
+Version:	2.3
+Release:	%mkrel 1
 License:	GPL
 Group:		System/Libraries
 URL:		http://www.easysw.com/~mike/mxml/
 Source0:	ftp://ftp3.easysw.com/pub/mxml/%{version}/mxml-%{version}.tar.bz2
-Patch0:		mxml-2.2.2-shared.diff
+BuildRequires:	chrpath
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
@@ -59,9 +59,8 @@ support character entities other than those required by the XML specification.
 %package -n	%{libname}-devel
 Summary:	Static library and header files for the Miniature XML development library
 Group:		Development/C
-Obsoletes:	%{name}-devel
-Provides:	%{name}-devel = %{version}
-Requires:	%{libname} = %{version}
+Provides:	libmxml-devel = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n	%{libname}-devel
 This package contains the static mxml library and its header files.
@@ -69,29 +68,12 @@ This package contains the static mxml library and its header files.
 %prep
 
 %setup -q
-%patch0 -p1
 
 %build
+%configure2_5x \
+	--enable-shared
 
-export CFLAGS="%{optflags} -fPIC"
-
-./configure \
-    --prefix=%{_prefix} \
-    --exec-prefix=%{_exec_prefix} \
-    --bindir=%{_bindir} \
-    --sbindir=%{_sbindir} \
-    --sysconfdir=%{_sysconfdir} \
-    --datadir=%{_datadir} \
-    --includedir=%{_includedir} \
-    --libdir=%{_libdir} \
-    --libexecdir=%{_libexecdir} \
-    --localstatedir=%{_localstatedir} \
-    --sharedstatedir=%{_sharedstatedir} \
-    --mandir=%{_mandir} \
-    --infodir=%{_infodir} \
-    --enable-shared
-
-make
+%make
 
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
@@ -102,6 +84,9 @@ mv %{buildroot}%{_datadir}/doc/mxml installed-docs
 
 rm -rf %{buildroot}%{_datadir}/man/cat*
 
+chrpath -d %{buildroot}%{_libdir}/*.so.%{major}*
+chrpath -d %{buildroot}%{_bindir}/mxmldoc
+
 %post -n %{libname} -p /sbin/ldconfig
 
 %postun -n %{libname} -p /sbin/ldconfig
@@ -110,19 +95,17 @@ rm -rf %{buildroot}%{_datadir}/man/cat*
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %files -n %{libname}
-%defattr(-,root,root)
+%defattr(644,root,root,755)
 %doc ANNOUNCEMENT CHANGES COPYING README doc/*.html
-%{_libdir}/*.so.*
+%attr(755,root,root) %{_libdir}/*.so.%{major}*
 
 %files -n %{libname}-devel
-%defattr(-,root,root)
+%defattr(644,root,root,755)
 %doc installed-docs/*
-%{_bindir}/*
+%attr(755,root,root) %{_bindir}/*
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/*.a
 %{_libdir}/pkgconfig/mxml.pc
 %{_mandir}/man1/*
 %{_mandir}/man3/*
-
-
