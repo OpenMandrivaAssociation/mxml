@@ -82,7 +82,7 @@ This package contains the static mxml library and its header files.
 
 mv %{buildroot}%{_datadir}/doc/mxml installed-docs
 
-rm -rf %{buildroot}%{_datadir}/man/cat*
+rm -rf %{buildroot}%{_mandir}/cat*
 
 chrpath -d %{buildroot}%{_libdir}/*.so.%{major}*
 chrpath -d %{buildroot}%{_bindir}/mxmldoc
