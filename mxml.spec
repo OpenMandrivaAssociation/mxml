@@ -1,14 +1,15 @@
 %define	major 1
 %define libname	%mklibname mxml %{major}
+%define develname %mklibname -d mxml
 
 Summary:	Miniature XML development library
 Name:		mxml
 Version:	2.3
 Release:	%mkrel 1
-License:	GPL
+License:	LGPLv2+
 Group:		System/Libraries
-URL:		http://www.easysw.com/~mike/mxml/
-Source0:	ftp://ftp3.easysw.com/pub/mxml/%{version}/mxml-%{version}.tar.bz2
+URL:		http://www.minixml.org/
+Source0:	http://www.minixml.org/software.php?VERSION=2.3&FILE=mxml/%version/mxml-%{version}.tar.bz2
 BuildRequires:	chrpath
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -56,13 +57,14 @@ Mini-XML doesn't do validation or other types of processing on the data based
 upon schema files or other sources of definition information, nor does it
 support character entities other than those required by the XML specification.
 
-%package -n	%{libname}-devel
+%package -n	%develname
 Summary:	Static library and header files for the Miniature XML development library
 Group:		Development/C
 Provides:	libmxml-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
+Obsoletes: %mklibname -d mxml 1
 
-%description -n	%{libname}-devel
+%description -n	%develname
 This package contains the static mxml library and its header files.
 
 %prep
@@ -99,7 +101,7 @@ chrpath -d %{buildroot}%{_bindir}/mxmldoc
 %doc ANNOUNCEMENT CHANGES COPYING README doc/*.html
 %attr(755,root,root) %{_libdir}/*.so.%{major}*
 
-%files -n %{libname}-devel
+%files -n %develname
 %defattr(644,root,root,755)
 %doc installed-docs/*
 %attr(755,root,root) %{_bindir}/*
