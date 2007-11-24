@@ -4,12 +4,12 @@
 
 Summary:	Miniature XML development library
 Name:		mxml
-Version:	2.3
+Version:	2.4
 Release:	%mkrel 1
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://www.minixml.org/
-Source0:	http://www.minixml.org/software.php?VERSION=2.3&FILE=mxml/%version/mxml-%{version}.tar.bz2
+Source0:	http://www.minixml.org/software.php?VERSION=2.3&FILE=mxml/%version/mxml-%{version}.tar.gz
 BuildRequires:	chrpath
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
