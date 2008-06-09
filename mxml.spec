@@ -89,9 +89,13 @@ rm -rf %{buildroot}%{_mandir}/cat*
 chrpath -d %{buildroot}%{_libdir}/*.so.%{major}*
 chrpath -d %{buildroot}%{_bindir}/mxmldoc
 
+%if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
+%endif
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
