@@ -5,7 +5,7 @@
 Summary:	Miniature XML development library
 Name:		mxml
 Version:	2.5
-Release:	%mkrel 1
+Release:	%mkrel 3
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://www.minixml.org/
