@@ -86,8 +86,8 @@ mv %{buildroot}%{_datadir}/doc/mxml installed-docs
 
 rm -rf %{buildroot}%{_mandir}/cat*
 
-chrpath -d %{buildroot}%{_libdir}/*.so.%{major}*
-chrpath -d %{buildroot}%{_bindir}/mxmldoc
+#chrpath -d %{buildroot}%{_libdir}/*.so.%{major}*
+#1hrpath -d %{buildroot}%{_bindir}/mxmldoc
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
