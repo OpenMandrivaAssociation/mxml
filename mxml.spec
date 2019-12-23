@@ -102,7 +102,7 @@ rm -rf %{buildroot}%{_mandir}/cat*
 
 %files -n %{libname}
 %defattr(644,root,root,755)
-%doc ANNOUNCEMENT CHANGES COPYING README doc/*.html
+%doc doc/*.html
 %attr(755,root,root) %{_libdir}/*.so.%{major}*
 
 %files -n %develname
