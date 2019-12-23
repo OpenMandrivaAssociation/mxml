@@ -4,12 +4,12 @@
 
 Summary:	Miniature XML development library
 Name:		mxml
-Version:	2.7
-Release:	2
+Version:	3.1
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://www.minixml.org/
-Source0:	http://ftp.easysw.com/pub/mxml/%version/mxml-%{version}.tar.gz
+Source0:	https://github.com/michaelrsweet/mxml/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	chrpath
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -72,15 +72,15 @@ This package contains the static mxml library and its header files.
 %setup -q
 
 %build
-%configure2_5x \
+%configure \
 	--enable-shared
 
-%make
+%make_build
 
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
-%makeinstall_std BUILDROOT=%{buildroot}
+%make_install BUILDROOT=%{buildroot}
 
 mv %{buildroot}%{_datadir}/doc/mxml installed-docs
 
@@ -118,15 +118,15 @@ chrpath -d %{buildroot}%{_bindir}/mxmldoc
 
 
 %changelog
-* Fri Dec 30 2011 Götz Waschk <waschk@mandriva.org> 2.7-1mdv2012.0
+* Fri Dec 30 2011 GÃ¶tz Waschk <waschk@mandriva.org> 2.7-1mdv2012.0
 + Revision: 748225
 - update to new version 2.7
 
-* Wed Jul 13 2011 Götz Waschk <waschk@mandriva.org> 2.6-2
+* Wed Jul 13 2011 GÃ¶tz Waschk <waschk@mandriva.org> 2.6-2
 + Revision: 689836
 - rebuild
 
-* Mon Jun 08 2009 Götz Waschk <waschk@mandriva.org> 2.6-1mdv2011.0
+* Mon Jun 08 2009 GÃ¶tz Waschk <waschk@mandriva.org> 2.6-1mdv2011.0
 + Revision: 383920
 - new version
 - fix source URL
@@ -138,7 +138,7 @@ chrpath -d %{buildroot}%{_bindir}/mxmldoc
   + Pixel <pixel@mandriva.com>
     - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
 
-* Thu Jan 31 2008 Götz Waschk <waschk@mandriva.org> 2.5-1mdv2008.1
+* Thu Jan 31 2008 GÃ¶tz Waschk <waschk@mandriva.org> 2.5-1mdv2008.1
 + Revision: 160646
 - new version
 
@@ -148,11 +148,11 @@ chrpath -d %{buildroot}%{_bindir}/mxmldoc
   + Thierry Vignaud <tv@mandriva.org>
     - kill re-definition of %%buildroot on Pixel's request
 
-* Sat Nov 24 2007 Götz Waschk <waschk@mandriva.org> 2.4-1mdv2008.1
+* Sat Nov 24 2007 GÃ¶tz Waschk <waschk@mandriva.org> 2.4-1mdv2008.1
 + Revision: 111769
 - new version
 
-* Mon Oct 22 2007 Götz Waschk <waschk@mandriva.org> 2.3-1mdv2008.1
+* Mon Oct 22 2007 GÃ¶tz Waschk <waschk@mandriva.org> 2.3-1mdv2008.1
 + Revision: 101117
 - new devel name
 - fix URL
@@ -177,16 +177,16 @@ chrpath -d %{buildroot}%{_bindir}/mxmldoc
 - make it a shared lib
 - Import mxml
 
-* Mon May 29 2006 Götz Waschk <waschk@mandriva.org> 2.2.2-1mdv2007.0
+* Mon May 29 2006 GÃ¶tz Waschk <waschk@mandriva.org> 2.2.2-1mdv2007.0
 - Rebuild
 
-* Thu May 26 2005 G�tz Waschk <waschk@mandriva.org> 2.2.2-1mdk
+* Thu May 26 2005 Götz Waschk <waschk@mandriva.org> 2.2.2-1mdk
 - New release 2.2.2
 
-* Sat Apr 16 2005 G�tz Waschk <waschk@linux-mandrake.com> 2.2-1mdk
+* Sat Apr 16 2005 Götz Waschk <waschk@linux-mandrake.com> 2.2-1mdk
 - source URL
 - New release 2.2
 
-* Mon Jul 19 2004 G�tz Waschk <waschk@linux-mandrake.com> 2.0-1mdk
+* Mon Jul 19 2004 Götz Waschk <waschk@linux-mandrake.com> 2.0-1mdk
 - initial package
 
