@@ -4,7 +4,7 @@
 
 Summary:	Miniature XML development library
 Name:		mxml
-Version:	3.1
+Version:	3.2
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
