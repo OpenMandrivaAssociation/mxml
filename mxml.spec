@@ -4,11 +4,11 @@
 
 Summary:	Miniature XML development library
 Name:		mxml
-Version:	4.0.2
+Version:	4.0.3
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
-URL:		http://www.minixml.org/
+URL:		https://www.minixml.org/
 Source0:	https://github.com/michaelrsweet/mxml/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	chrpath
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
@@ -82,7 +82,7 @@ This package contains the static mxml library and its header files.
 
 %make_install BUILDROOT=%{buildroot}
 
-mv %{buildroot}%{_datadir}/doc/mxml installed-docs
+#mv %{buildroot}%{_datadir}/doc/mxml installed-docs
 
 rm -rf %{buildroot}%{_mandir}/cat*
 
@@ -107,7 +107,7 @@ rm -rf %{buildroot}%{_mandir}/cat*
 
 %files -n %develname
 %defattr(644,root,root,755)
-%doc installed-docs/*
+#doc installed-docs/*
 #attr(755,root,root) %{_bindir}/*
 %{_includedir}/*
 %{_libdir}/*.so
