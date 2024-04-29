@@ -107,12 +107,11 @@ rm -rf %{buildroot}%{_mandir}/cat*
 
 %files -n %develname
 %defattr(644,root,root,755)
-#doc installed-docs/*
-#attr(755,root,root) %{_bindir}/*
+%doc %{_datadir}/doc/mxml4/
 %{_includedir}/*
 %{_libdir}/*.so
 #{_libdir}/*.a
-#{_libdir}/pkgconfig/mxml.pc
+%{_libdir}/pkgconfig/mxml4.pc
 #{_mandir}/man1/*
 %{_mandir}/man3/*
 
