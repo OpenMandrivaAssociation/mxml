@@ -111,8 +111,8 @@ rm -rf %{buildroot}%{_mandir}/cat*
 #attr(755,root,root) %{_bindir}/*
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*.a
-%{_libdir}/pkgconfig/mxml.pc
+#{_libdir}/*.a
+#{_libdir}/pkgconfig/mxml.pc
 #{_mandir}/man1/*
 %{_mandir}/man3/*
 
