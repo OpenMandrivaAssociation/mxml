@@ -1,4 +1,4 @@
-%define	major 1
+%define	major 2
 %define libname	%mklibname mxml %{major}
 %define develname %mklibname -d mxml
 
