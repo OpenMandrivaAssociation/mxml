@@ -10,6 +10,11 @@ License:	LGPLv2+
 Group:		System/Libraries
 URL:		https://www.minixml.org/
 Source0:	https://github.com/michaelrsweet/mxml/releases/download/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	chrpath
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
